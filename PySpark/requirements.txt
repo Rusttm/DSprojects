@@ -1,1 +1,4 @@
 pyspark==3.5.1
+scikit-learn==1.5.1
+setuptools==71.1.0
+PyArrow==17.0.0
