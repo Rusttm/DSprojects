@@ -96,7 +96,8 @@ pivot_df2.show()
 +-----------+----------+----------+------------------+
 тогда, наверное, стоит перефразировать 'за соответствующий день' в 'за все предыдущие дни' или 'продажи на этот день'
 """
-avg_window = Window.partitionBy("category").rowsBetween(-3, 0)
+# avg_window = Window.partitionBy("category").rowsBetween(-3, 0)
+avg_window = Window.partitionBy("category").rowsBetween(Window.unboundedPreceding, Window.currentRow)
 revenue_avg_cat = sdf.withColumn("cat_avg_profit", F.avg("revenue").over(avg_window))
 pivot_df3 = revenue_avg_cat.groupBy("category").pivot("date").agg(F.first_value("cat_avg_profit"))
 print("Вариант 3:")
