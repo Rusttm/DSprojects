@@ -19,7 +19,8 @@ ss = SparkSession.builder.master("local[1]").appName("pandas df").getOrCreate()
 
 """
 sdf = ss.createDataFrame(df)
-
+# т.к. в pd type(Salary)=string необходимо поменять тип колонки в spark dataframe
+sdf = sdf.withColumn("Salary", sdf["Salary"].cast("int"))
 """ 
 приводим исходную таблицу к виду:
 +-----+------+-------------+-----------+
