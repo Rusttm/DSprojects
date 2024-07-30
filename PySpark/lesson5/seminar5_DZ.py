@@ -6,11 +6,7 @@
 
 import pyspark
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import countDistinct
 from pyspark.sql import functions as F
-import pandas as pd
-
-
 
 #Создаем SparkSession
 spark=SparkSession.builder.appName('DZ5').getOrCreate()
